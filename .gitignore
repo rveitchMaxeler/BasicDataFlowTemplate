@@ -4,6 +4,7 @@
 *.so
 *.pyc
 *.pcap
+*.swp
 bin
 .metadata*
 .deps

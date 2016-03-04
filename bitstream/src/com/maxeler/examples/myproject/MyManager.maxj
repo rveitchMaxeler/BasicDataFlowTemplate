@@ -1,0 +1,37 @@
+package com.maxeler.examples.dynamicgap;
+
+import com.maxeler.maxcompiler.v2.build.EngineParameters;
+import com.maxeler.maxcompiler.v2.managers.BuildConfig;
+import com.maxeler.maxcompiler.v2.managers.custom.blocks.KernelBlock;
+import com.maxeler.maxcompiler.v2.managers.custom.stdlib.DebugLevel;
+import com.maxeler.networking.v1.managers.NetworkManager;
+
+
+public class DynamicGapManager extends NetworkManager {
+
+	public DynamicGapManager(EngineParameters configuration) {
+		super(configuration);
+
+
+		debug.setDebugLevel(new DebugLevel().setHasStreamStatus(true).setHasStreamStatusChecksums(true));
+
+		KernelBlock processor = addKernel(new Processor(this));
+
+		processor.getInput(Processor.INPUT) <== addFramedStreamFromCPU("src", Types.dynamicGapLinkType);
+
+		addFramedStreamToCPU("dst", Types.dynamicGapLinkType) <== processor.getOutput(Processor.OUTPUT);
+	}
+
+	public static void main(String[] args) {
+		DynamicGapEngineParameters params = new DynamicGapEngineParameters(args);
+		DynamicGapManager manager = new DynamicGapManager(params);
+
+		BuildConfig buildConfig = manager.getBuildConfig();
+		buildConfig.setMPPRCostTableSearchRange(params.getMPPRStartCT(), params.getMPPREndCT());
+		buildConfig.setMPPRParallelism(params.getMPPRThreads());
+		buildConfig.setMPPRRetryNearMissesThreshold(params.getMPPRRetryThreshold());
+
+		manager.build();
+	}
+
+}
