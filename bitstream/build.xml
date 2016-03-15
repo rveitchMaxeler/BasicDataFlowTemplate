@@ -45,8 +45,8 @@
 		</maxjcompiler>
 	</target>
 	
-	<target name="Gap">
-		<java classname="com.maxeler.examples.myproject" failonerror="true" fork="yes">
+	<target name="MyProject">
+		<java classname="com.maxeler.examples.myproject.MyProjectManager" failonerror="true" fork="yes">
 			<arg line="target=DFE_SIM" />
 			<classpath refid="bitstreams.local.classpath"/>
 		</java>
