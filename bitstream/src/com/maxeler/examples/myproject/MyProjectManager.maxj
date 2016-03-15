@@ -17,8 +17,8 @@ public class MyProjectManager extends NetworkManager {
 		debug.setDebugLevel(new DebugLevel().setHasStreamStatus(true));
 
 		KernelBlock k = addKernel(new MyProjectKernel(this));
-		k.getInput(MyProjectKernel.INPUT) <== addFramedStreamFromCPU("src", Types.someLinkType);
-		addFramedStreamToCPU("dst", Types.someLinkType) <== k.getOutput(MyProjectKernel.OUTPUT);
+		k.getInput(MyProjectKernel.INPUT) <== addFramedStreamFromCPU("src", MyProjectTypes.someLinkType);
+		addFramedStreamToCPU("dst", MyProjectTypes.someLinkType) <== k.getOutput(MyProjectKernel.OUTPUT);
 	}
 
 	public static void main(String[] args) {

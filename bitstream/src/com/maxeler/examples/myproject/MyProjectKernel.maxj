@@ -1,6 +1,6 @@
 package com.maxeler.examples.myproject;
 
-import com.maxeler.examples.myproject.Types.SomeLinkType;
+import com.maxeler.examples.myproject.MyProjectTypes.SomeLinkType;
 import com.maxeler.maxcompiler.v2.kernelcompiler.KernelLite;
 import com.maxeler.maxcompiler.v2.kernelcompiler.KernelLite.IO.PushInput;
 import com.maxeler.maxcompiler.v2.kernelcompiler.KernelLite.IO.PushOutput;
@@ -15,7 +15,7 @@ public class MyProjectKernel extends KernelLite {
 	public MyProjectKernel(NetworkManager owner) {
 		super(owner, "MyProjectKernel");
 
-		SomeLinkType linkType = Types.someLinkType;
+		SomeLinkType linkType = MyProjectTypes.someLinkType;
 
 		PushInput<DFEStruct> input = io.pushInput(INPUT, linkType, 8);
 

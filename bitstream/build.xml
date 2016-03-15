@@ -4,7 +4,7 @@
 	<property name="ECLIPSE_HOME" value="${env.MAXCOMPILERDIR}/lib/MaxIDE"/>
 	<property name="debuglevel" value="source,lines,vars"/>
 	<property name="target" value="1.6"/>
-	<property name="source" value="1.6"/>
+	<property name="source" value="1.6"/> 
 
 	<taskdef name="maxjcompiler" classname="org.eclipse.jdt.core.ant.taskdef.MaxjTask" classpath="${env.MAXCOMPILERDIR}/lib/MaxIDE/ecj.jar" onerror="ignore"/>
 
@@ -46,7 +46,7 @@
 	</target>
 	
 	<target name="Gap">
-		<java classname="com.maxeler.examples.dynamicgap.DynamicGapManager" failonerror="true" fork="yes">
+		<java classname="com.maxeler.examples.myproject" failonerror="true" fork="yes">
 			<arg line="target=DFE_SIM" />
 			<classpath refid="bitstreams.local.classpath"/>
 		</java>

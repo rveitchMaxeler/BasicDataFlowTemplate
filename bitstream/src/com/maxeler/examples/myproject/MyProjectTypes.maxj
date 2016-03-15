@@ -4,7 +4,7 @@ import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFETypeFactory;
 import com.maxeler.maxcompiler.v2.kernelcompiler.types.composite.DFEStructType;
 import com.maxeler.networking.v1.framed_kernels.FramedLinkType;
 
-public class Types {
+public class MyProjectTypes {
 	public static SomeLinkType someLinkType = new SomeLinkType();
 	public static class SomeLinkType extends DFEStructType implements FramedLinkType {
 		private static final String SOF = "sof";
