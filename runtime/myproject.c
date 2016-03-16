@@ -12,6 +12,7 @@
 #include "MaxSLiCInterface.h"
 #include "MaxSLiCNetInterface.h"
 
+extern max_file_t *MyProject_init();
 
 int main(int argc, char *argv[]) {
 
