@@ -13,6 +13,8 @@ MAXFILES = ['MyProject.max']
 sources = ['myproject.c']
 target = 'myproject'
 includes = []
+my_cflags = []
+my_ldflags = []
 
 
 b = MaxRuntimeBuilder(maxfiles=MAXFILES)
@@ -25,10 +27,10 @@ def build():
 
 def compile():
 	b.slicCompile()
-	b.compile(sources)
+	b.compile(sources, extra_cflags=my_cflags)
 
 def link():
-	b.link(sources, target)
+	b.link(sources, target, extra_ldflags=my_ldflags)
 
 def clean():
 	b.clean()
