@@ -1,12 +1,12 @@
 #define _GNU_SOURCE
 
 #include <errno.h>
+#include <err.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
-#include <err.h>
 
 
 #include "MaxSLiCInterface.h"
