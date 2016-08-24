@@ -1,6 +1,6 @@
 package com.maxeler.examples.myproject;
 
-import com.maxeler.examples.myproject.MyProjectTypes.SomeLinkType;
+import com.maxeler.examples.myproject.Types.SomeLinkType;
 import com.maxeler.maxcompiler.v2.kernelcompiler.KernelLite;
 import com.maxeler.maxcompiler.v2.kernelcompiler.KernelLite.IO.PushInput;
 import com.maxeler.maxcompiler.v2.kernelcompiler.KernelLite.IO.PushOutput;
@@ -8,14 +8,14 @@ import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar;
 import com.maxeler.maxcompiler.v2.kernelcompiler.types.composite.DFEStruct;
 import com.maxeler.networking.v1.managers.NetworkManager;
 
-public class MyProjectKernel extends KernelLite {
+public class MyKernel extends KernelLite {
 	public static String INPUT = "inputFrame";
 	public static String OUTPUT = "outputFrame";
 
-	public MyProjectKernel(NetworkManager owner) {
+	public MyKernel(NetworkManager owner) {
 		super(owner, "MyProjectKernel");
 
-		SomeLinkType linkType = MyProjectTypes.someLinkType;
+		SomeLinkType linkType = Types.someLinkType;
 
 		PushInput<DFEStruct> input = io.pushInput(INPUT, linkType, 8);
 

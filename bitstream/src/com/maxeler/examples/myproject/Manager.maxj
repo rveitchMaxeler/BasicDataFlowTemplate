@@ -9,21 +9,21 @@ import com.maxeler.maxcompiler.v2.managers.custom.stdlib.DebugLevel;
 import com.maxeler.networking.v1.managers.NetworkManager;
 
 
-public class MyProjectManager extends NetworkManager {
+public class Manager extends NetworkManager {
 
-	public MyProjectManager(EngineParameters configuration) {
+	public Manager(EngineParameters configuration) {
 		super(configuration);
 
 		debug.setDebugLevel(new DebugLevel().setHasStreamStatus(true));
 
-		KernelBlock k = addKernel(new MyProjectKernel(this));
-		k.getInput(MyProjectKernel.INPUT) <== addFramedStreamFromCPU("src", MyProjectTypes.someLinkType);
-		addFramedStreamToCPU("dst", MyProjectTypes.someLinkType) <== k.getOutput(MyProjectKernel.OUTPUT);
+		KernelBlock k = addKernel(new MyKernel(this));
+		k.getInput(MyKernel.INPUT) <== addFramedStreamFromCPU("src", Types.someLinkType);
+		addFramedStreamToCPU("dst", Types.someLinkType) <== k.getOutput(MyKernel.OUTPUT);
 	}
 
 	public static void main(String[] args) {
-		MyProjectParameters params = new MyProjectParameters(args);
-		MyProjectManager manager = new MyProjectManager(params);
+		Parameters params = new Parameters(args);
+		Manager manager = new Manager(params);
 
 		BuildConfig bc = manager.getBuildConfig();
 		bc.setBuildEffort(Effort.VERY_HIGH);
