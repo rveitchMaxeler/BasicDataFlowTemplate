@@ -4,6 +4,7 @@
 	<property name="debuglevel" value="source,lines,vars"/>
 	<property name="target" value="1.6"/>
 	<property name="source" value="1.6"/> 
+	<property name="build.sysclasspath" value="last"/>
 
 	<fail unless="env.MAXCOMPILERDIR" message="MAXCOMPILERDIR not set to a MaxCompiler distribution"/>
 	<fail unless="env.MAXCOMPILERNETDIR" message="MAXCOMPILERNETDIR not set to a MaxCompilerNet distribution"/>
@@ -14,6 +15,7 @@
 	<property name="maxnet"	value="${env.MAXCOMPILERNETDIR}/lib/MaxCompilerNet.jar"/>
 	<property name="maxpower" value="${env.MAXPOWERDIR}/bin"/>
 	<property name="maxpowernet"   value="${env.MAXPOWERNETDIR}/bin"/>
+
 	<path id="bitstreams.classpath">
 		<pathelement location="bin"/>
 		<pathelement location="${maxeda}"/>
@@ -44,7 +46,8 @@
 	<target depends="init" name="build-project">
 		<echo message="${ant.project.name}: ${ant.file}"/>
 		<pathconvert property="classpathProp" refid="bitstreams.classpath"/>
-		<echo>Classpath: ${classpathProp}</echo>
+		<echo>Project classpath: ${classpathProp}</echo>
+		<echo>System classpath: ${java.class.path}</echo>
 		<maxjcompiler debug="true" debuglevel="${debuglevel}" destdir="bin" source="${source}" target="${target}">
 			<src path="src"/>
 			<classpath refid="bitstreams.classpath"/>
