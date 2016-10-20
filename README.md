@@ -15,7 +15,8 @@ source utils/maxenv.sh
 ### Bitstream
 ```bash
 cd bitstream
-ant
+ant sim # for Simulation
+ant dfe # for Hardware
 ```
 
 
