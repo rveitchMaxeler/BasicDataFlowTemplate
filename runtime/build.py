@@ -31,7 +31,7 @@ def build():
 	link()
 
 def compile():
-#	b.slicCompile()
+	b.slicCompile()
 	b.compile(sources, extra_cflags=cflags)
 
 def link():
