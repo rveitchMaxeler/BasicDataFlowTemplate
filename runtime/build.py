@@ -13,7 +13,7 @@ MAXFILES = ['MyProject.max']
 sources = ['myproject.c']
 target = 'myproject'
 includes = []
-cflags = []
+cflags = ['-Werror', '-O2', '-ggdb' ]
 ldflags = []
 
 simNetConfig = [
@@ -31,7 +31,7 @@ def build():
 	link()
 
 def compile():
-	b.slicCompile()
+#	b.slicCompile()
 	b.compile(sources, extra_cflags=cflags)
 
 def link():
