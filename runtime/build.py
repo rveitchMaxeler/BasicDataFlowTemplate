@@ -13,8 +13,13 @@ MAXFILES = ['MyProject.max']
 sources = ['myproject.c']
 target = 'myproject'
 includes = []
-my_cflags = []
-my_ldflags = []
+cflags = []
+ldflags = []
+
+simNetConfig = [
+				{ 'NAME' : 'QSFP_TOP_10G_PORT1', 'DFE': '172.16.50.1', 'TAP': '172.16.50.10', 'NETMASK' : '255.255.255.0' },
+				{ 'NAME' : 'QSFP_BOT_10G_PORT1', 'DFE': '172.16.60.1', 'TAP': '172.16.60.10', 'NETMASK' : '255.255.255.0' }
+			]
 
 
 b = MaxRuntimeBuilder(maxfiles=MAXFILES)
@@ -27,26 +32,27 @@ def build():
 
 def compile():
 	b.slicCompile()
-	b.compile(sources, extra_cflags=my_cflags)
+	b.compile(sources, extra_cflags=cflags)
 
 def link():
-	b.link(sources, target, extra_ldflags=my_ldflags)
+	b.link(sources, target, extra_ldflags=ldflags)
 
 def clean():
 	b.clean()
 
 def start_sim():
-	s.start()
+	s.start(netConfig=simNetConfig)
 
 def stop_sim():
 	s.stop()
 
 def restart_sim():
-	s.start()
+	stop_sim()
+	start_sim()
 
 def run_sim():
 	build()
-	s.start()
+	restart_sim()
 	e.execCommand([ "./" + target ])
 	e.wait()
 #	s.stop()
