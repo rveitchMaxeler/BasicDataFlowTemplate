@@ -1,0 +1,23 @@
+package com.maxeler.examples.myproject;
+
+import com.maxeler.maxcompiler.v2.kernelcompiler.Kernel;
+import com.maxeler.maxcompiler.v2.kernelcompiler.KernelParameters;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.KernelType;
+import com.maxeler.maxcompiler.v2.kernelcompiler.types.base.DFEVar;
+
+public class PassThroughKernel extends Kernel {
+
+	public static String s_inputName = "input";
+	public static String s_outputName = "output";
+
+	protected PassThroughKernel(KernelParameters kernelParams, PassThroughEngineParams engineParams) {
+		super(kernelParams);
+
+		KernelType<DFEVar> type = dfeRawBits(engineParams.getNumberOfBits());
+		DFEVar data = io.input(s_inputName, type);
+
+		io.output(s_outputName, data.getType()) <== data;
+
+	}
+
+}

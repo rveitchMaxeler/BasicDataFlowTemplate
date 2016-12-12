@@ -9,21 +9,17 @@ except ImportError, e:
 	print "Couldn't find project-utils modules."
 	sys.exit(1)
 
-MAXFILES = ['MyProject.max']
+MAXFILES = ['PassThrough.max']
 sources = ['myproject.c']
 target = 'myproject'
 includes = []
 cflags = ['-Werror', '-O2', '-ggdb' ]
 ldflags = []
 
-simNetConfig = [
-				{ 'NAME' : 'QSFP_TOP_10G_PORT1', 'DFE': '172.16.50.1', 'TAP': '172.16.50.10', 'NETMASK' : '255.255.255.0' },
-				{ 'NAME' : 'QSFP_BOT_10G_PORT1', 'DFE': '172.16.60.1', 'TAP': '172.16.60.10', 'NETMASK' : '255.255.255.0' }
-			]
-
+simNetConfig = []
 
 b = MaxRuntimeBuilder(maxfiles=MAXFILES)
-s = MaxCompilerSim(dfeModel="ISCA")
+s = MaxCompilerSim(dfeModel="MAIA")
 e = Executor(logPrefix="[%s] " % (target))
 
 def build():

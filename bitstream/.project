@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>MyProjectBitstream</name>
+	<name>DataFlowProjectBitstream</name>
 	<comment></comment>
 	<manageMaxCompiler>false</manageMaxCompiler>
 	<manageMaxGenFD>false</manageMaxGenFD>
 	<manageMaxBlox>false</manageMaxBlox>
-	<maxelerVersion></maxelerVersion>
+	<maxelerVersion>1.0</maxelerVersion>
 	<maxelerBuildSystemVersion></maxelerBuildSystemVersion>
 	<projects>
 	</projects>

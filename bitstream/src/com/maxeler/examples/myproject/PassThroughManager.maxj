@@ -1,0 +1,33 @@
+package com.maxeler.examples.myproject;
+
+import com.maxeler.maxcompiler.v2.managers.custom.CustomManager;
+import com.maxeler.maxcompiler.v2.managers.custom.blocks.KernelBlock;
+import com.maxeler.maxcompiler.v2.managers.custom.stdlib.DebugLevel;
+
+public class PassThroughManager extends CustomManager {
+
+	public PassThroughManager(PassThroughEngineParams params) {
+		super(params);
+
+		KernelBlock k = addKernel(new PassThroughKernel(makeKernelParameters("PassThroughKernel"), params));
+
+		k.getInput(PassThroughKernel.s_inputName) <== addStreamFromCPU(PassThroughKernel.s_inputName);
+		addStreamToCPU(PassThroughKernel.s_outputName) <== k.getOutput(PassThroughKernel.s_outputName);
+
+	}
+
+	public static void main (String[] args){
+		PassThroughEngineParams params = new PassThroughEngineParams(args);
+		PassThroughManager manager = new PassThroughManager(params);
+
+		DebugLevel dl = new DebugLevel();
+		dl.setHasStreamStatus(true);
+
+		manager.debug.setDebugLevel(dl);
+
+		manager.build();
+
+
+	}
+
+}

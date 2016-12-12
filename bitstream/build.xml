@@ -55,7 +55,7 @@
 	</target>
 	
 	<target name="sim" depends="build">
-		<java classname="com.maxeler.examples.myproject.Manager" failonerror="true" fork="yes">
+		<java classname="com.maxeler.examples.myproject.PassThroughManager" failonerror="true" fork="yes">
 			<arg line="target=DFE_SIM" />
 			<classpath refid="bitstreams.classpath"/>
 		</java>
@@ -63,7 +63,7 @@
 
 	
 	<target name="dfe" depends="build">
-		<java classname="com.maxeler.examples.myproject.Manager" failonerror="true" fork="yes">
+		<java classname="com.maxeler.examples.myproject.PassThroughManager" failonerror="true" fork="yes">
 			<arg line="target=DFE" />
 			<classpath refid="bitstreams.classpath"/>
 		</java>
