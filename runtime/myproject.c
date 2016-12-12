@@ -20,6 +20,8 @@ extern max_file_t *PassThrough_init();
 int main(int argc, char *argv[])
 {
 
+	int ret = 0;
+
 	size_t ticks = 512;
 	size_t sizeBytes = 4*ticks;
 
@@ -56,10 +58,12 @@ int main(int argc, char *argv[])
 
 	for (int iii=0 ; iii<ticks ; iii++){
 		printf("%d: %d == %d\n", iii, input[iii], output[iii]);
+
+		if(input[iii] != output[iii]) ret++;
 	}
 
 	max_unload(engine);
 	max_file_free(maxfile);
 
-	return 0;
+	return ret;
 }
